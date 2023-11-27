@@ -1,0 +1,5 @@
+data("ChickWeight")
+boxplot(weight ~ Diet, data = ChickWeight, main = "Box plot of Weight Grouped by Diet", xlab = "Diet", ylab = "Weight")
+hist(ChickWeight$weight[ChickWeight$Diet == 1], col = "lightblue", main = "Histogram of Weight for Diet-1", xlab = "Weight", ylab = "Frequency")
+plot(weight ~ Time, data = ChickWeight, col = Diet, main = "Scatter plot of Weight vs Time Grouped by Diet", xlab = "Time", ylab = "Weight", pch = 16)
+legend("topright", legend = levels(ChickWeight$Diet), col = 1:4, pch = 16, title = "Diet")
