@@ -1,0 +1,7 @@
+set.seed(123)
+sampled_levels <- sample(LETTERS, size = 10, replace = TRUE)
+random_factor <- factor(sampled_levels)
+five_levels <- levels(random_factor)[1:5]
+cat("Sampled Levels:", sampled_levels, "\n")
+cat("Five Extracted Levels:", five_levels, "\n")
+
