@@ -1,0 +1,4 @@
+data("Titanic")
+barplot(Titanic[, , ,"Yes"], beside=TRUE, col=c("lightblue", "lightgreen"), main="Survival on Titanic by Passenger Class", xlab="Passenger Class", ylab="Number of Passengers", legend=c("No", "Yes"))
+barplot(Titanic[, , ,"Yes"], beside=TRUE, col=c("lightblue", "lightgreen"), main="Survival on Titanic by Passenger Class and Gender", xlab="Passenger Class", ylab="Number of Passengers", legend=c("No", "Yes"), args.legend = list(x="topright"), names.arg = c("1st Class", "2nd Class", "3rd Class"), beside=TRUE)
+hist(na.omit(as.vector(Titanic[,,,"No"])), col="lightblue", main="Distribution of Age on Titanic", xlab="Age", ylab="Number of Passengers")
