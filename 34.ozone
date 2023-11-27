@@ -1,0 +1,22 @@
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+missing_values = df.isna().sum()
+for column in df.columns:
+    if missing_values[column] > 0:
+        if missing_values[column] / len(df) < 0.1:
+            df[column].fillna(df[column].mean(), inplace=True)
+        else:
+            df.dropna(subset=[column], inplace=True)
+X = df[['Solar.R']]
+y = df['Ozone']
+model = LinearRegression()
+model.fit(X, y)
+plt.scatter(df['Solar.R'], df['Ozone'], label='Data points')
+plt.plot(X, model.predict(X), color='red', label='Regression line')
+plt.xlabel('Solar.R')
+plt.ylabel('Ozone')
+plt.title('Scatter plot and Linear Regression')
+plt.legend()
+plt.show()
