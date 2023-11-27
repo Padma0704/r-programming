@@ -1,0 +1,24 @@
+install.packages(c("dplyr", "reshape2"))
+library(dplyr)
+library(reshape2)
+data("ChickWeight")
+ordered_df <- ChickWeight %>% arrange(diet, weight) %>% group_by(diet) %>% slice_tail(n = 6)
+melted_df <- melt(ChickWeight, id.vars = c("Chick", "Time", "Diet"))
+mean_weight <- dcast(melted_df, Diet ~ variable, mean)
+mode_weight <- dcast(melted_df, Diet ~ variable, function(x) {
+  tbl <- table(x)
+  mode <- as.numeric(names(tbl[tbl == max(tbl)]))
+  return(mode)
+})
+
+cat("(i) Last 6 records after ordering by 'weight' grouped by 'diet':\n")
+print(ordered_df)
+
+cat("\n(ii) a. Melted data frame based on 'Chick', 'Time', 'Diet' features as ID variables:\n")
+print(melted_df)
+
+cat("\n(ii) b. Mean value of weight grouped by Diet:\n")
+print(mean_weight)
+
+cat("\n(ii) c. Mode of weight grouped by Diet:\n")
+print(mode_weight)
