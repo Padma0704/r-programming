@@ -1,0 +1,15 @@
+x <- 1:10
+y <- c("apple", "banana", "orange")
+z <- matrix(1:6, nrow = 2)
+object_names <- ls()
+object_details <- sapply(object_names, function(obj) str(obj, vec.len = 1))
+cat("Details of objects in memory:\n")
+cat("------------------------------\n")
+for (i in seq_along(object_names)) {
+  cat(object_names[i], ":", object_details[i], "\n")
+}
+cat("\nDetails of objects using objects() function:\n")
+cat("--------------------------------------------\n")
+objects_details <- objects()
+cat(objects_details, "\n")
+
