@@ -1,0 +1,14 @@
+get_unique_elements_string <- function(input_string) {
+  unique_elements <- unique(strsplit(input_string, '')[[1]])
+  return(unique_elements)
+}
+get_unique_numbers_vector <- function(input_vector) {
+  unique_numbers <- unique(input_vector)
+  return(unique_numbers)
+}
+example_string <- "hello world"
+example_vector <- c(3, 1, 2, 3, 4, 2, 5, 1)
+unique_elements_string <- get_unique_elements_string(example_string)
+cat("Unique elements of the string:", unique_elements_string, "\n")
+unique_numbers_vector <- get_unique_numbers_vector(example_vector)
+cat("Unique numbers of the vector:", unique_numbers_vector, "\n")
