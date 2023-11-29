@@ -1,0 +1,4 @@
+set.seed(123)
+random_vector <- sample(seq(-50, 50), 10, replace = TRUE)
+cat("Vector of 10 random integer values between -50 and +50:", random_vector, "\n")
+
