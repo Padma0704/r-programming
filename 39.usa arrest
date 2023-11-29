@@ -1,0 +1,30 @@
+data("USArrests")
+cat("i. a. Summary of the USArrests dataset:\n")
+summary(USArrests)
+cat("\ni. b. State with the largest total number of rape:\n")
+state_with_max_rape <- USArrests[which.max(USArrests$Rape), ]
+print(state_with_max_rape)
+cat("\ni. c. State with the max crime rate for murder:\n")
+state_with_max_murder <- USArrests[which.max(USArrests$Murder), ]
+print(state_with_max_murder)
+cat("\nState with the min crime rate for murder:\n")
+state_with_min_murder <- USArrests[which.min(USArrests$Murder), ]
+print(state_with_min_murder)
+cat("\nii. a. Correlation matrix among features:\n")
+correlation_matrix <- cor(USArrests)
+print(correlation_matrix)
+cat("\nii. b. States with assault arrests more than the median:\n")
+states_above_median_assault <- USArrests[USArrests$Assault > median(USArrests$Assault), ]
+print(states_above_median_assault)
+cat("\nii. c. States in the bottom 25% of murder:\n")
+states_bottom_25_percent_murder <- USArrests[USArrests$Murder < quantile(USArrests$Murder, 0.25), ]
+print(states_bottom_25_percent_murder)
+cat("\niii. a. Histogram and Density Plot of Murder Arrests:\n")
+hist(USArrests$Murder, main = "Histogram of Murder Arrests", xlab = "Murder Arrests", col = "lightblue")
+lines(density(USArrests$Murder), col = "red", lwd = 2)
+cat("\niii. b. Scatter plot with color representing assault arrest rates:\n")
+plot(USArrests$UrbanPop, USArrests$Murder, col = USArrests$Assault, pch = 19, main = "Murder vs UrbanPop",
+     xlab = "UrbanPop", ylab = "Murder")
+cat("\niii. c. Bar graph of murder rate for each state:\n")
+barplot(USArrests$Murder, names.arg = rownames(USArrests), col = "lightblue", main = "Murder Rate by State",
+        xlab = "State", ylab = "Murder Rate")
