@@ -1,0 +1,11 @@
+values_vector <- c(1, 2, 3, 4, 5, 6, 7, 8)
+dimensions_vector <- c(2, 2, 2)  # Represents a 2x2x2 array
+dimnames_list <- list(
+  c("Row1", "Row2"),
+  c("ColA", "ColB"),
+  c("DepthX", "DepthY")
+)
+my_array <- array(values_vector, dim = dimensions_vector, dimnames = dimnames_list)
+cat("Created Array:\n")
+print(my_array)
+
