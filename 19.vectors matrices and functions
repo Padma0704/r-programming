@@ -1,0 +1,12 @@
+my_vector <- c(1, 2, 3, 4, 5)
+my_matrix <- matrix(1:6, nrow = 2)
+my_function <- function(x) {
+  return(x^2)
+}
+my_list <- list(
+  my_vector,
+  my_matrix,
+  my_function
+)
+cat("Content of the List:\n")
+print(my_list)
