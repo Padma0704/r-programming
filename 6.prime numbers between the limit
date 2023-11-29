@@ -1,0 +1,14 @@
+sieve_of_eratosthenes <- function(limit) {
+  is_prime <- rep(TRUE, limit)
+  is_prime[1:2] <- FALSE
+  for (i in 2:sqrt(limit)) {
+    if (is_prime[i]) {
+      is_prime[i^2:limit] <- FALSE
+    }
+  }
+ 
+  return(which(is_prime))
+}
+limit <- 50  # You can change this to your desired limit
+prime_numbers <- sieve_of_eratosthenes(limit)
+cat("Prime numbers up to", limit, ":", prime_numbers, "\n")
