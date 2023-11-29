@@ -1,0 +1,17 @@
+data(iris)
+set.seed(123)
+train_indices <- sample(1:nrow(iris), 0.8 * nrow(iris))
+train_data <- iris[train_indices, ]
+test_data <- iris[-train_indices, ]
+library(nnet)
+model <- multinom(Species ~ Petal.Length + Petal.Width, data = train_data)
+predicted_probs <- predict(model, newdata = test_data, "probs")
+predicted_classes <- colnames(predicted_probs)[apply(predicted_probs, 1, which.max)]
+confusion_matrix <- table(predicted_classes, test_data$Species)
+cat("Logistic Regression Model Results:\n")
+cat("Predicted Probabilities:\n")
+print(predicted_probs)
+cat("\nPredicted Classes:\n")
+print(predicted_classes)
+cat("\nConfusion Matrix:\n")
+print(confusion_matrix)
